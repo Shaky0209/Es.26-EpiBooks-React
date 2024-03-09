@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
    
 
-export default function MyCard({book}) {
-  const {img, title, price, category} = book;
+export default function MyCard(props) {
+  const {img, title, price, category} = props;
   return (
     <div className='col-9 col-md-4 col-lg-3 col-xl-2 p-3'>
     <Card style={{height:'100%'}}>

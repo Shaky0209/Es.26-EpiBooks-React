@@ -1,7 +1,7 @@
 import React from 'react'
-import './Footer.css'
+import './MyFooter.css'
 
-export default function Footer() {
+export default function MyFooter() {
   return (
     <footer className='bg-primary d-flex justify-content-center align-items-center'>
         <h5>Footer</h5>
