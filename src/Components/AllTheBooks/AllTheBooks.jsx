@@ -1,20 +1,15 @@
 import React from 'react'
-import fantasy from '../../Data/fantasy.json';
-import MyCard from '../MyCard/MyCard';
+import SingleBook from '../SingleBook/SingleBook';
 
-export default function AllTheBooks() {
-    
+export default function AllTheBooks({books}) {
+
   return (
     <div className='container-fluid'>
         <div className="row">
-            {fantasy.map((element)=>{
+            {books.map((element)=>{
               return(
-                <MyCard key={element.asin}
-                  // book={element}
-                  img={element.img}
-                  category={element.category}
-                  title={element.title}
-                  price={element.price}
+                <SingleBook key={element.asin}
+                  book={element}
                   />
                 );
             })}
