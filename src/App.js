@@ -1,38 +1,27 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import MyNav from './Components/Navbar/MyNav';
 import MyAlert from "./Components/MyAlert/MyAlert";
 import Welcome from './Components/Welcome/Welcome';
 import AllTheBooks from "./Components/AllTheBooks/AllTheBooks";
 import MyFooter from './Components/MyFooter/MyFooter';
-import InputControl from './Components/InputControl/InputControl';
-import { useState } from 'react';
 import fantasy from './Data/fantasy.json';
-
-
+import { ThemeContext } from './context/TemeContextProvider';
 
 export default function App() {
-  const [inputSearch, setInputSearch] = useState("");
-  const [books, setBooks] = useState(fantasy);
 
-  const seachFnc = ()=>{
-    let result = fantasy.filter((element) => {
-      return(element.title.toLowerCase().includes(inputSearch.toLowerCase()))
-    });
-    setBooks(result);
-  }
+  const [books, setBooks] = useState(fantasy);
+  const [theme, setTheme] = useState(true);
 
   return (
     <>
-    <MyNav />
-    <InputControl
-    setValue = {setInputSearch}
-    doSearch = {seachFnc}
-    />
-    <MyAlert />
-    <Welcome />
-    <AllTheBooks books={books} />
-    <MyFooter />
+    <ThemeContext.Provider>
+      <MyNav setBooks={setBooks} theme = {theme} setTheme = {setTheme} />
+      <MyAlert />
+      <Welcome theme = {theme} setTheme = {setTheme}/>
+      <AllTheBooks books={books} theme={theme} setTheme={setTheme}/>
+      <MyFooter theme={theme} setTheme={setTheme}/>
+    </ThemeContext.Provider>
     </>
   );
 }

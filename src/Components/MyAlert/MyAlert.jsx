@@ -1,7 +1,9 @@
 import React from 'react'
 import Alert from 'react-bootstrap/Alert';
+import './MyAlert.css';
 
 export default function MyAlert() {
+  
   return (
     <>
       {['danger'].map((variant) => (

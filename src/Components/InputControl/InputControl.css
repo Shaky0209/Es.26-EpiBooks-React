@@ -1,0 +1,8 @@
+#text-search{
+    background-color: white;
+    color: black;
+}
+
+#text-search::placeholder{
+    color: grey;
+}

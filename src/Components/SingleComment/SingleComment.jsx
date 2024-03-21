@@ -1,8 +1,23 @@
-import React from 'react'
+import React from 'react';
+import './SingleComment.css';
 
 export default function SingleComment(props) {
-  const {content} = props;
+  const {content, remove} = props;
   return (
-    <p key={content._id}>{content.comment}</p>
+    <div className='d-flex'>
+      <button 
+      className='delBtn'
+      id={content._id}
+      type='button'
+      onClick={
+        (event)=>{
+        remove(event)
+        }
+      }
+      >
+        X
+      </button>
+      <p>{content.comment}</p>
+    </div>
   )
 }

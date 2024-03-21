@@ -1,10 +1,10 @@
 import React from 'react'
 import SingleBook from '../SingleBook/SingleBook';
 
-export default function AllTheBooks({books}) {
+export default function AllTheBooks({books, theme}) {
 
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid '>
         <div className="row">
             {books.map((element)=>{
               return(
