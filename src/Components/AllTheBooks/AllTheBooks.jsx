@@ -1,19 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import SingleBook from '../SingleBook/SingleBook';
+import CommentArea from '../CommentArea/CommentArea';
+import { Container, Row, Col } from 'react-bootstrap';
+import './AllTheBooks.css';
 
-export default function AllTheBooks({books, theme}) {
+export default function AllTheBooks(props) {
 
+  const {books, theme} = props;
+  const [lifting, setLifting] = useState(null)
+    
   return (
-    <div className='container-fluid '>
-        <div className="row">
-            {books.map((element)=>{
-              return(
-                <SingleBook key={element.asin}
-                  book={element}
+    <Container fluid className={theme ? "light" : "dark"}>
+        <Row className='d-flex justify-content-center'>
+          <Col xs={7} md={9} >
+            <Row>
+              {books.map((element)=>{
+                
+                return(
+                  <SingleBook key={element.asin}
+                    book={element}
+                    theme = {theme}
+                    asin = {element.asin}
+                    btnFnc = {()=> setLifting(element.asin)}
                   />
-                );
-            })}
-        </div>
-    </div>
+                  );
+              })}
+            </Row>
+          </Col>
+          <Col xs={5} md={3}>
+            <div className='sticky-top d-flex align-items-center vh-100'>
+              {console.log(lifting)}
+              {lifting ? <CommentArea asin={lifting}/> : "Select an object and view comments"}
+            </div>
+          </Col>
+        </Row>
+    </Container>
   );
 }

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import CommentArea from '../CommentArea/CommentArea';
+import './SingleBook.css'
 
 
-export default function SingleBook({book}) {
-  const { img, title, price, category, asin } = book;
+export default function SingleBook(props) {
+  const {book, theme, btnFnc} = props;
+  const { img, title, price, category } = book;
   const [selected, setSelected] = useState(false);  
   
   const toggleFnc = () => {
@@ -13,10 +14,10 @@ export default function SingleBook({book}) {
   }
 
   return (
-    <div className='col-9 col-md-4 col-lg-3 col-xl-2 p-3'>
+    <div className={`col-10 offset-1 offset-md-0 col-md-4 col-lg-3 p-1 ${theme ? "light" : "dark"}`}>
       <Card 
       style={{ height: '100%' }}
-      className ={selected ? "border border-4 border-danger" : ""}
+      className ={`${selected ? "border border-4 border-danger" : ""} ${theme ? "light-card" : "dark-card"}`}
       selected={false}      
       >
         <Card.Img variant="top" src={img} style={{ width: '100%' }} />
@@ -28,9 +29,14 @@ export default function SingleBook({book}) {
             <Button variant="primary">Click!</Button>
             {/* Ho inserito il bottone 'select' in quanto andando a cliccare nel campo di input
             si deselezionava l'oggetto e spariva tutta la sezione CommentArea*/}
-            <Button variant="success" className='ms-2' onClick={() => toggleFnc()}>Select</Button>
+            <Button
+            variant="success"
+            className='ms-2'
+            onClick={() => btnFnc()}
+            >
+              Select
+            </Button>
           </div>
-          {selected && <CommentArea asin={asin} />}
         </Card.Body>
       </Card>
     </div>

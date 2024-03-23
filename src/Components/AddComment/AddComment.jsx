@@ -34,7 +34,7 @@ export default function AddComment({asin, fetchFnc}) {
     }
     
   return(
-    <div>
+    <>
       <Form onSubmit={sendComment}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label className='mt-3'>Add your Comment</Form.Label>
@@ -96,6 +96,6 @@ export default function AddComment({asin, fetchFnc}) {
         </Form.Group>
         <Button className='mb-3' type="submit">Send</Button>
       </Form>
-    </div>
+    </>
   )
 }
