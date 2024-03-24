@@ -5,13 +5,10 @@ import { Container } from 'react-bootstrap';
 import './CommentArea.css';
 
 export default function CommentArea(props) {
-  const { asin, lifting} = props;
+  const {asin} = props;
+  console.log(asin);
   const [data, setData] = useState([]);
   let json;
-
-  useEffect(()=>{
-    CommentArea();
-  }, [asin]);
   
   const fetchFnc = async ()=> {
     try {
@@ -23,10 +20,9 @@ export default function CommentArea(props) {
     }
   };
   
-
   useEffect(()=>{
     fetchFnc();
-  }, [])
+  }, [asin])
 
   return (
     <Container fluid>
