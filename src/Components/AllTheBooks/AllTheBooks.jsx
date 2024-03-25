@@ -7,18 +7,7 @@ import './AllTheBooks.css';
 export default function AllTheBooks(props) {
 
   const {books, theme} = props;
-  const [lifting, setLifting] = useState(null);
   const [selected, setSelected] = useState(null);
-
-  const setBorderRed = (asin)=>{
-    if(lifting === asin){
-      setSelected(asin);
-      console.log(`IF = TRUE lifting = ${lifting} element.asin= ${asin} selected= ${selected}`);
-    }else{
-      setSelected(null);
-      console.log(`IF = FALSE lifting = ${lifting} element.asin= ${asin} selected= ${selected}`);
-    }
-  }
 
   return (
     <Container fluid className={theme ? "light" : "dark"}>
@@ -32,11 +21,7 @@ export default function AllTheBooks(props) {
                     book={element}
                     theme = {theme}
                     asin = {element.asin}
-                    btnFnc = {()=>{
-                      setLifting(element.asin);
-                      setBorderRed(element.asin);
-                    }}
-                    lifting= {lifting}
+                    btnFnc = {()=> setSelected(element.asin)}
                     selected={selected}
                     setSelected={setSelected}
                   />
@@ -46,8 +31,7 @@ export default function AllTheBooks(props) {
           </Col>
           <Col xs={5} md={3}>
             <div className='sticky-top d-flex align-items-center vh-100'>
-              {console.log(lifting)}
-              {lifting ? <CommentArea asin={lifting} lifting={lifting}/> : "Select an object and view comments"}
+              {selected ? <CommentArea selected={selected} /> : "Select an object and view comments"}
             </div>
           </Col>
         </Row>

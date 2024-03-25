@@ -5,14 +5,13 @@ import { Container } from 'react-bootstrap';
 import './CommentArea.css';
 
 export default function CommentArea(props) {
-  const {asin} = props;
-  console.log(asin);
+  const {selected} = props;
   const [data, setData] = useState([]);
   let json;
   
   const fetchFnc = async ()=> {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/books/${asin}/comments/`)
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/books/${selected}/comments/`)
       json = await response.json();
       setData(json);
     } catch (error) {
@@ -22,11 +21,11 @@ export default function CommentArea(props) {
   
   useEffect(()=>{
     fetchFnc();
-  }, [asin])
+  }, [selected])
 
   return (
     <Container fluid>
-      <AddComment asin={asin} fetchFnc={fetchFnc} />
+      <AddComment selected={selected} fetchFnc={fetchFnc} />
       <CommentList comments={data} fetchFnc={fetchFnc}/>
     </Container>
   )

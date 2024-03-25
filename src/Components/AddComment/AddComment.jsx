@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-export default function AddComment({asin, fetchFnc}) {
+export default function AddComment({selected, fetchFnc}) {
 
   const [textComment, setTextComment] = useState("");
   const [rateValue, setRateValue] = useState({})
@@ -12,9 +12,9 @@ export default function AddComment({asin, fetchFnc}) {
       let textObj ={
         comment: textComment,
         rate: rateValue,
-        elementId: asin,
+        elementId: selected,
       };
-      console.log(textObj);
+      
       try{
         const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`, 
         {
@@ -23,10 +23,9 @@ export default function AddComment({asin, fetchFnc}) {
           headers: {"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQzZjY1NDI0ZjYwNTAwMTkzN2Q1MTgiLCJpYXQiOjE3MTA4MDMyOTQsImV4cCI6MTcxMjAxMjg5NH0.syVCFxwn-N9PI6OwtT3VBLnDoQjtAc1VHeiBmBsk2Zo", "Content-type":"application/json;charset=UTF-8"}
         });
           if(response.ok){
-            console.log("Fetch andata a buon fine.");
             fetchFnc()
           }else{
-            console.log("Fetch fallita!");
+            console.log("Fetch POST failed!");
           }
       } catch(error){
         console.log(error);

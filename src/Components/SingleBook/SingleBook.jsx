@@ -2,7 +2,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './SingleBook.css'
 
-
 export default function SingleBook(props) {
   const {book, theme, btnFnc, selected, asin} = props;
   const { img, title, price, category } = book;
