@@ -1,26 +1,21 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
-import MyNav from "./Components/Navbar/MyNav";
-import MyAlert from "./Components/MyAlert/MyAlert";
-import Welcome from "./Components/Welcome/Welcome";
-import AllTheBooks from "./Components/AllTheBooks/AllTheBooks";
-import MyFooter from "./Components/MyFooter/MyFooter";
-import fantasy from "./Data/fantasy.json";
-import { ThemeContext } from "./context/TemeContextProvider";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Components/ComponentsPage/Home";
+import NotFound from "./Components/NotFound/NotFound";
+import BookDetails from "./Components/ComponentsPage/BookDetails";
+import ThemeContextProvider from "./context/ThemeContextProvider";
+
 
 export default function App() {
-  const [books, setBooks] = useState(fantasy);
-  const [theme, setTheme] = useState(true);
 
   return (
-    <>
-      <ThemeContext.Provider>
-        <MyNav setBooks={setBooks} theme={theme} setTheme={setTheme} />
-        <MyAlert theme={theme} />
-        <Welcome theme={theme} />
-        <AllTheBooks books={books} theme={theme} />
-        <MyFooter theme={theme} />
-      </ThemeContext.Provider>
-    </>
+    <BrowserRouter>
+      <ThemeContextProvider>
+        <Routes>
+          <Route path = "/" element={<Home />} />
+          <Route path="/details/:elementId" element={<BookDetails />} />
+          <Route path = "/*" element= {<NotFound />} />
+        </Routes>
+      </ThemeContextProvider>
+    </BrowserRouter>
   );
 }

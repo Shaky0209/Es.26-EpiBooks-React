@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
+// import { ThemeContext } from '../../context/ThemeContextProvider';
 
 export default function AddComment({selected, fetchFnc}) {
 
   const [textComment, setTextComment] = useState("");
   const [rateValue, setRateValue] = useState({})
+  // const {theme, setTheme} = useContext(ThemeContext);
 
   const sendComment = async (event)=>{
       event.preventDefault();

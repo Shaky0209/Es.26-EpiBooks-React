@@ -21,12 +21,12 @@ export default function CommentArea(props) {
   
   useEffect(()=>{
     fetchFnc();
-  }, [selected])
+  }, [selected]);
 
   return (
-    <Container fluid>
+    <Container fluid data-testid="comment-area">
       <AddComment selected={selected} fetchFnc={fetchFnc} />
-      <CommentList comments={data} fetchFnc={fetchFnc}/>
+      <CommentList comments={data} fetchFnc={fetchFnc} />
     </Container>
   )
 }

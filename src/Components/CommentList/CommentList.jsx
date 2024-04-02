@@ -4,9 +4,8 @@ import './CommentList.css';
 
 export default function CommentList(props) {
   const {comments, fetchFnc} = props;
-
+  
   const fetchToRemove = async (id)=>{
-
     try{
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, 
       {

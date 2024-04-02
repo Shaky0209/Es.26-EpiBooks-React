@@ -1,20 +1,21 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container';
+import React, { useContext, useState } from 'react'
+import { Button, Col, Row } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons';
+import { ThemeContext } from '../../context/ThemeContextProvider.jsx';
+import { useNavigate } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import InputControl from '../InputControl/InputControl.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import fantasy from '../../Data/fantasy.json';
-import { useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function MyNav(props) {
-  const {setBooks, theme, setTheme} = props;
+  const {setBooks} = props;
+  const {theme, setTheme} = useContext(ThemeContext);
   const [inputSearch, setInputSearch] = useState("");
   const setBackground = theme ? faMoon : faSun;
-
+  const navigate = useNavigate();
   
   const seachFnc = ()=>{
     let result = fantasy.filter((element) => {
@@ -22,31 +23,30 @@ export default function MyNav(props) {
     });
     setBooks(result);
   }
+  
   return (
-    <Navbar  className="row" bg={theme ? "primary" : "dark"} data-bs-theme="dark">
-      <Container className="col-12 mx-0">
-        <Navbar.Brand href="#">EpiBooks</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="#">Home</Nav.Link>
+    <Navbar bg={theme ? "primary" : "dark"} data-bs-theme="dark">
+        <Navbar.Brand className='ms-2' href="#">EpiBooks</Navbar.Brand>
+        <Nav>
+          <Nav.Link onClick={()=> navigate("/")}>Home</Nav.Link>
           <Nav.Link href="#">About</Nav.Link>
           <Nav.Link href="#">Brouse</Nav.Link>
         </Nav>
-        <div className="row col-8 d-flex justify-content-center">
-        <InputControl
-          setValue = {setInputSearch}
-          doSearch = {seachFnc}
-        />
-        </div>
-        <img src="./Icon/sun.jpg" alt="" height={"30px"}/>
-        <Button
-        variant="outline-light" 
-        className="col-1 me-2"
-        style={{width: "40px"}}
-        type="button" onClick={()=> setTheme(!theme)}
-        >
-          <FontAwesomeIcon icon={setBackground} />
-        </Button>
-      </Container>
+        <Row className='d-flex justify-content-between align-items-center w-100'>
+          <Col md={10} className='d-flex justify-content-center'>
+            {window.location.pathname === "/" && <InputControl setValue = {setInputSearch} doSearch = {seachFnc} />}
+          </Col>
+          <Col md={1}>
+            <Button
+            variant="outline-light" 
+            
+            style={{width: "40px", height: "40px"}}
+            type="button" onClick={()=> setTheme(!theme)}
+            >
+            <FontAwesomeIcon icon={setBackground} />
+            </Button>
+          </Col>
+        </Row>
     </Navbar>
     
   );

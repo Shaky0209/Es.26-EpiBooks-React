@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useState, useContext } from 'react';
 import SingleBook from '../SingleBook/SingleBook';
 import CommentArea from '../CommentArea/CommentArea';
 import { Container, Row, Col } from 'react-bootstrap';
+import { ThemeContext } from '../../context/ThemeContextProvider';
 import './AllTheBooks.css';
 
 export default function AllTheBooks(props) {
 
-  const {books, theme} = props;
+  const {books} = props;
   const [selected, setSelected] = useState(null);
+  const {theme} = useContext(ThemeContext);
 
   return (
     <Container fluid className={theme ? "light" : "dark"}>
-        <Row className='d-flex justify-content-center'>
+        <Row className='d-flex justify-content-center pb-5'>
           <Col xs={7} md={9} >
             <Row>
               {books.map((element)=>{
@@ -21,7 +24,7 @@ export default function AllTheBooks(props) {
                     book={element}
                     theme = {theme}
                     asin = {element.asin}
-                    btnFnc = {()=> setSelected(element.asin)}
+                    selectFnc = {()=> setSelected(element.asin)}
                     selected={selected}
                     setSelected={setSelected}
                   />
