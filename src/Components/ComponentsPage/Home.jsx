@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import MyNav from "../Navbar/MyNav";
 import MyAlert from "../MyAlert/MyAlert";

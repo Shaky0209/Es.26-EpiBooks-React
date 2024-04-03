@@ -2,7 +2,7 @@ import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './InputControl.css';
 
-export default function InputControl({setValue, doSearch}) {
+export default function InputControl({setValue, searchFnc}) {
 
 
 
@@ -14,17 +14,21 @@ export default function InputControl({setValue, doSearch}) {
         className='form-control text-center my-3'
         type='text'
         placeholder='Insert your text search'
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(event) => {
+          setValue(event.target.value);
+          searchFnc();
+
+        }}
         >
         </Form.Control>
-        <Button 
+        {/* <Button 
         variant="outline-light"
         className='ms-2 my-3'
         type='submit'
         onClick={() => doSearch()}
         >
           Search
-        </Button>
+        </Button> */}
       </Form.Group>
   )
 }

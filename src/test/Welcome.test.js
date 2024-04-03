@@ -1,6 +1,6 @@
 import { screen, render } from "@testing-library/react";
-import Welcome from "./Welcome";
-import ThemeContextProvider from "../../context/ThemeContextProvider";
+import Welcome from "../Components/Welcome/Welcome";
+import ThemeContextProvider from "../context/ThemeContextProvider";
 
 test('Testing Welcome Component', ()=>{
 

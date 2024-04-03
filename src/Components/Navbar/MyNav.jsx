@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons';
@@ -17,13 +17,17 @@ export default function MyNav(props) {
   const setBackground = theme ? faMoon : faSun;
   const navigate = useNavigate();
   
-  const seachFnc = ()=>{
-    let result = fantasy.filter((element) => {
+  const searchFnc = ()=>{
+      let result = fantasy.filter((element) => {
       return(element.title.toLowerCase().includes(inputSearch.toLowerCase()))
     });
     setBooks(result);
   }
-  
+
+  useEffect(()=>{
+    searchFnc();
+  }, [inputSearch]);
+
   return (
     <Navbar bg={theme ? "primary" : "dark"} data-bs-theme="dark">
         <Navbar.Brand className='ms-2' href="#">EpiBooks</Navbar.Brand>
@@ -34,7 +38,7 @@ export default function MyNav(props) {
         </Nav>
         <Row className='d-flex justify-content-between align-items-center w-100'>
           <Col md={10} className='d-flex justify-content-center'>
-            {window.location.pathname === "/" && <InputControl setValue = {setInputSearch} doSearch = {seachFnc} />}
+            {window.location.pathname === "/" && <InputControl setValue = {setInputSearch} searchFnc = {searchFnc} />}
           </Col>
           <Col md={1}>
             <Button

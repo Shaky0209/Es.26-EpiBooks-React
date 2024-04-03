@@ -1,9 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import './SingleBook.css';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faListUl } from '@fortawesome/free-solid-svg-icons';
+import './SingleBook.css';
 
 export default function SingleBook(props) {
   const {book, theme, selectFnc, selected, asin} = props;

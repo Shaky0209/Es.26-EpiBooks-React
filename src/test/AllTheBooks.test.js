@@ -1,9 +1,9 @@
 import { screen, render } from "@testing-library/react";
-import ThemeContextProvider from "../../context/ThemeContextProvider";
-import fantasy from "../../Data/fantasy.json";
+import ThemeContextProvider from "../context/ThemeContextProvider";
+import fantasy from "../Data/fantasy.json";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../ComponentsPage/Home";
-import NotFound from "../NotFound/NotFound";
+import Home from "../Components/ComponentsPage/Home";
+import NotFound from "../Components/NotFound/NotFound";
 
 
 
