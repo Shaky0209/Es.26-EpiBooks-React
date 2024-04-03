@@ -7,7 +7,7 @@ import "./MyAlert.css";
 export default function MyAlert() {
   const {theme} = useContext(ThemeContext);
   return (
-    <div className={`${theme ? "light" : "dark"}  py-3`}>
+    <div className={`${theme ? "light" : "dark"}  py-3 ps-1`}>
       {["danger"].map((variant) => (
         <Alert
           key={variant}

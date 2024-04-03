@@ -5,9 +5,9 @@ import ThemeContextProvider from "../context/ThemeContextProvider";
 test('Testing Welcome Component', ()=>{
 
     render(
-    <ThemeContextProvider>
-        <Welcome />
-    </ThemeContextProvider>
+        <ThemeContextProvider>
+            <Welcome />
+        </ThemeContextProvider>
 
     );
 

@@ -14,8 +14,8 @@ export default function AllTheBooks(props) {
 
   return (
     <Container fluid className={theme ? "light" : "dark"}>
-        <Row className='d-flex justify-content-center pb-5'>
-          <Col xs={7} md={9} >
+        <Row className='d-flex justify-content-center pb-5 ps-1'>
+          <Col xs={6} lg={9} >
             <Row>
               {books.map((element)=>{
                 
@@ -32,7 +32,7 @@ export default function AllTheBooks(props) {
               })}
             </Row>
           </Col>
-          <Col xs={5} md={3}>
+          <Col xs={6} lg={3}>
             <div className='sticky-top d-flex align-items-center vh-100'>
               {selected ? <CommentArea selected={selected} /> : "Select an object and view comments"}
             </div>

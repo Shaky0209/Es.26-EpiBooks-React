@@ -1,11 +1,8 @@
 .delBtn{
-    height: 20px;
-    min-width: 20px;
-    padding: 0;
-    margin: 10px 10px 0 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 30px;
+    width: 30px;
+    padding: 6px !important;
+    margin: 10px 10px 0 0;    
 }
 
 .yellow{

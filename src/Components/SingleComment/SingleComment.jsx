@@ -1,16 +1,16 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import './SingleComment.css';
 
 export default function SingleComment(props) {
   const {content, remove} = props;
   return (
-    <div className='d-flex'>
+    <div className='d-flex' data-testid="single-comment">
       {window.location.pathname === "/" &&
       <Button className='delBtn' id={content._id} type='button' onClick={(event)=>{remove(event)}}>
-        X
+        <FontAwesomeIcon icon={faCircleXmark} className='mb-2 me-2 ms-0' />
       </Button>
       
       }

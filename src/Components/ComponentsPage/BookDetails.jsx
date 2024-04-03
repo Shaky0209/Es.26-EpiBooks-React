@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import MyNav from '../Navbar/MyNav';
 import MyFooter from '../MyFooter/MyFooter';
 import fantasy from "../../Data/fantasy.json";
 import DetailsContent from '../DetailsContent/DetailsContent';
@@ -21,7 +20,9 @@ export default function BookDetails() {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/books/${elementId}/comments/`)
       json = await response.json();
+
       setData(json);
+      
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +34,6 @@ export default function BookDetails() {
 
   return (
     <>
-      <MyNav theme={theme} setTheme={setTheme} />
       <DetailsContent
       asin={asin}
       category={category}

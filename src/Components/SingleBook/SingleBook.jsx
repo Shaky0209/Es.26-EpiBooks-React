@@ -6,12 +6,13 @@ import { faCheck, faListUl } from '@fortawesome/free-solid-svg-icons';
 import './SingleBook.css';
 
 export default function SingleBook(props) {
+  
   const {book, theme, selectFnc, selected, asin} = props;
   const { img, title, price, category } = book;
   const navigate = useNavigate()
 
   return (
-    <div data-testid='book-card' className={`col-10 offset-1 offset-md-0 col-md-4 col-lg-3 p-1 ${theme ? "light" : "dark"}`}>
+    <div data-testid='book-card' className={`col-10 offset-1 offset-md-0 col-md-6 col-lg-3 p-1 ${theme ? "light" : "dark"}`}>
       <Card 
       style={{ height: '100%' }}
       className ={`${(selected === asin) ? "border border-4 border-danger" : ""} ${theme ? "light-card" : "dark-card"}`}

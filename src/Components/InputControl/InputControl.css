@@ -6,3 +6,7 @@
 #text-search::placeholder{
     color: grey;
 }
+
+.form-group{
+    width: 40vw;
+}

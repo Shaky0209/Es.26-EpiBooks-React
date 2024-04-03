@@ -1,24 +1,11 @@
 import { screen, render } from "@testing-library/react";
-import ThemeContextProvider from "../context/ThemeContextProvider";
 import fantasy from "../Data/fantasy.json";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../Components/ComponentsPage/Home";
-import NotFound from "../Components/NotFound/NotFound";
-
-
-
+import App from "../App";
 
 test('Testing The Rendering all SingleBook components', ()=>{
 
     render(
-        <BrowserRouter>
-            <ThemeContextProvider>
-                <Routes>
-                    <Route path = "/" element={<Home />} />
-                    <Route path = "/*" element= {<NotFound />} />
-                </Routes>
-            </ThemeContextProvider>
-        </BrowserRouter>
+        <App />
     );
     
     const AllElementsBook = screen.getAllByTestId("book-card");
