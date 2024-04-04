@@ -11,13 +11,13 @@ import fantasy from '../../Data/fantasy.json';
 import './MyNav.css';
 
 export default function MyNav(props) {
+
   const {setBooks} = props;
   const {theme, setTheme} = useContext(ThemeContext);
   const [inputSearch, setInputSearch] = useState("");
   const setBackground = theme ? faMoon : faSun;
   const navigate = useNavigate();
   let linkPage = window.location.pathname;
-  
 
   const searchFnc = ()=>{
       let result = fantasy.filter((element) => {

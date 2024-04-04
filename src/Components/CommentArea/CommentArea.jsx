@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Container } from 'react-bootstrap';
 import AddComment from '../AddComment/AddComment'
 import CommentList from '../CommentList/CommentList'
-import { Container } from 'react-bootstrap';
 import './CommentArea.css';
 
 export default function CommentArea(props) {

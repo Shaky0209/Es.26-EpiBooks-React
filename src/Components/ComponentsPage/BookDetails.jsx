@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ThemeContext } from '../../context/ThemeContextProvider';
 import MyFooter from '../MyFooter/MyFooter';
 import fantasy from "../../Data/fantasy.json";
 import DetailsContent from '../DetailsContent/DetailsContent';
-import { ThemeContext } from '../../context/ThemeContextProvider';
-
 
 export default function BookDetails() {
   const {elementId} = useParams();
@@ -14,7 +13,6 @@ export default function BookDetails() {
   const book = bookObj[0];
   const {asin, category, img, price, title} = book;
   let json;
-  
 
   const commentsFnc = async ()=> {
     try {

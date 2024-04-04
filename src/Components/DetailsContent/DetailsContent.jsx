@@ -1,10 +1,9 @@
 import React from 'react';
 import { Col, Row, Image } from 'react-bootstrap';
-import "./DetailsContent.css";
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContextProvider';
 import CommentList from '../CommentList/CommentList';
-
+import "./DetailsContent.css";
 
 export default function DetailsContent(props) {
 

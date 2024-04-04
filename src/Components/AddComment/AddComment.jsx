@@ -1,13 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
-// import { ThemeContext } from '../../context/ThemeContextProvider';
 
 export default function AddComment({selected, fetchFnc}) {
 
   const [textComment, setTextComment] = useState("");
   const [rateValue, setRateValue] = useState({})
-  // const {theme, setTheme} = useContext(ThemeContext);
 
   const sendComment = async (event)=>{
       event.preventDefault();
@@ -22,7 +20,7 @@ export default function AddComment({selected, fetchFnc}) {
         {
           method: "POST",
           body: JSON.stringify(textObj),
-          headers: {"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQzZjY1NDI0ZjYwNTAwMTkzN2Q1MTgiLCJpYXQiOjE3MTA4MDMyOTQsImV4cCI6MTcxMjAxMjg5NH0.syVCFxwn-N9PI6OwtT3VBLnDoQjtAc1VHeiBmBsk2Zo", "Content-type":"application/json;charset=UTF-8"}
+          headers: {"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBlNmQ3NTEzZGYwYTAwMTk0OWYzZmQiLCJpYXQiOjE3MTIyMjE1NTcsImV4cCI6MTcxMzQzMTE1N30.jLSG4m-8EY1F2CNxqejV8vonhsS7u-CDk5M5S-73xF8", "Content-type":"application/json;charset=UTF-8"}
         });
           if(response.ok){
             fetchFnc()

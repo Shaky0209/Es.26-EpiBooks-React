@@ -1,9 +1,9 @@
-import React from 'react'
 import { useState, useContext } from 'react';
-import SingleBook from '../SingleBook/SingleBook';
-import CommentArea from '../CommentArea/CommentArea';
 import { Container, Row, Col } from 'react-bootstrap';
 import { ThemeContext } from '../../context/ThemeContextProvider';
+import React from 'react'
+import SingleBook from '../SingleBook/SingleBook';
+import CommentArea from '../CommentArea/CommentArea';
 import './AllTheBooks.css';
 
 export default function AllTheBooks(props) {

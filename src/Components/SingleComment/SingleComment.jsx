@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './SingleComment.css';
 
 export default function SingleComment(props) {
@@ -9,10 +9,9 @@ export default function SingleComment(props) {
   return (
     <div className='d-flex' data-testid="single-comment">
       {window.location.pathname === "/" &&
-      <Button className='delBtn' id={content._id} type='button' onClick={(event)=>{remove(event)}}>
-        <FontAwesomeIcon icon={faCircleXmark} className='mb-2 me-2 ms-0' />
+      <Button className='delBtn p-0' id={content._id} type='button' onClick={(event)=>{remove(event)}}>
+        X
       </Button>
-      
       }
       <div className='border rounded w-100 m-1'>
         <ul className='mb-0'><li>{content.comment}</li></ul>
@@ -20,8 +19,6 @@ export default function SingleComment(props) {
           <b>Rate: </b>
           {[...Array(content.rate)].map((element, index) => <FontAwesomeIcon className="yellow" icon={faStar} key={index} />)}
         </p>
-          
-        
       </div>
     </div>
   )
